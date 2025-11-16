@@ -1,0 +1,211 @@
+.modal-overlay {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+.modal-overlay.show {
+    display: flex; 
+    align-items: flex-start; 
+    justify-content: center;
+    overflow-y: auto; 
+    padding: 50px 0; 
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 1200px;
+    background-color: #ffffff;
+    padding: 47px 53px;
+    border-radius: 20px;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #AAA;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-content h2 {
+    color: #81013A;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.modal-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.form-coluna-esquerda {
+    flex: 1;
+    max-width: 237px;
+}
+
+.cover-upload-area {
+    max-width: 237px;
+    /* height: 100%; */
+    min-height: 346px;
+    background-color: #b6b6b6;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.cover-upload-area .placeholder-icon {
+    margin-top: auto;
+}
+
+.btn-add-cover {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #7E7E7D;
+    color: #ffffff;
+    border: none;
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: auto;
+    font-weight: 700;
+}
+
+.form-coluna-direita {
+    flex: 2;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    color: #81013A;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    border: 2px solid #81013A;
+    border-radius: 100px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+}
+.form-group textarea {
+    border-radius: 20px;
+    height: 120px;
+    resize: vertical; 
+}
+
+.form-group select {
+    appearance: none;
+    background-image: url("/assets/img/acervo/icon_select_catalogos.png");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+}
+
+/* Rodapé com Botões */
+.form-botoes {
+    width: 100%; 
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+    border-top: 1px solid #EEE;
+    padding-top: 20px;
+}
+
+.btn-cancelar, .btn-salvar {
+    border-radius: 100px;
+    padding: 12.5px 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+}
+.btn-cancelar {
+    background-color: white;
+    border: 2px solid #81013A;
+    color: #81013A;
+}
+.btn-salvar {
+    background-color: #81013A;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@media screen and (max-width: 1200px) {
+    
+    .modal-content {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .form-coluna-esquerda {
+        flex: 2;
+        margin: 0 auto;
+    }
+    .form-coluna-direita {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .modal-form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-coluna-esquerda {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .cover-upload-area {
+        margin: 0 auto; 
+    }
+
+    .form-coluna-direita {
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+}

@@ -1,0 +1,167 @@
+.section-contato {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.section-content {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+}
+
+h1 {
+    font-size: 4rem;
+    color: #81013A;
+    font-weight: Bold;
+    margin-top: 80px;
+    margin-bottom: 54px;
+    font-family: "DM Sans", sans-serif;
+    text-align: left;
+}
+
+iframe {
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.btn-localizacao {
+    padding: 14px 0 0 11px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+}
+
+.btn-localizacao button {
+    cursor: pointer;
+    padding: 12.5px 20px;
+    border-radius: 100px;
+    border: none;
+    background-color: #7E7E7D;
+    color: #F8F8F8;
+    font-family: var(--family-inter);
+    font-size: 1rem;
+    
+}
+
+.btn-localizacao .ativo {
+    background-color: #81013A;
+}
+
+.endereco {
+    max-width: 654px;
+    padding: 15px 19px;
+    color: #393939;
+    font-family: var(--family-inter);
+    font-size: 0.875rem;
+    font-weight: 300;
+}
+
+.contact-us {
+    font-size: 2rem;
+    color: #48001D;
+    margin-bottom: 14px;
+    font-family: "DM Sans", sans-serif;
+}
+
+.contato-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contato {
+    padding: 40px 40px 0 45px;
+}
+
+form {
+    font-family: var(--family-inter)
+}
+
+label {
+    font-size: 1.5rem;
+    color: #48001D;
+    font-weight: bold;
+    padding-bottom: 4px;
+}
+
+input, textarea {
+    width: 422px;
+    height: 40px;
+    margin-bottom: 14px;
+    border: 2px solid #48001D;
+    border-radius: 100px;
+    padding: 10px 20px;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #48001D;
+    font-family: var(--family-inter);
+    font-size: 0.875rem;
+    font-weight: 300;
+}
+
+.btn-contato {
+    display: flex;
+    justify-content: end;
+    gap: 14px;
+}
+
+.btn-contato button {
+    padding: 12.5px 20px;
+    cursor: pointer;
+    border-radius: 100px;
+    border: 2px solid #81013A;
+    font-family: var(--family-inter);
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+#btn-cancelar {
+    color: #81013A;
+}
+
+#btn-enviar {
+    background-color: #81013A;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #F8F8F8;
+}
+
+@media screen and (max-width: 1220px) {
+    .section-contato {
+        padding: 0 16px 0 16px;
+    }
+    
+    .section-content {
+        padding-bottom: 45px ;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 786px) {
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .contato {
+        padding: 40px 20px 0 20px;
+    }
+
+    .contact-us h3 {
+        font-size: 1.5rem;
+    }
+
+    label {
+        font-size: 1.25rem;
+    }
+
+    input, textarea, .contato-form {
+        max-width: 319px;
+    }
+}
+
+

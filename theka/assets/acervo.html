@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/acervo.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/acervo/modal_material.css">
+    <link rel="stylesheet" href="css/acervo/modal_livros.css">
+    <link rel="stylesheet" href="css/acervo/modal_livros_editar.css">
+    <title>Acervo</title>
+    <script src="/assets/js/acervo/acervo.js" defer></script>
+    <script src="/assets/js/acervo/livros_novidades.js" defer></script>
+    <script src="/assets/js/acervo/catalogos.js" defer></script>
+    <script src="/assets/js/acervo/modal_material.js" defer></script>
+    <script src="/assets/js/acervo/modal_livros.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <img src="img/logo_header_branco.png" alt="Logo do cabeçalho">
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/inicio.html">Início</a></li>
+                    <li><a href="/assets/acervo.html">Acervo</a></li>
+                    <li><a href="/assets/sobre_nos.html">Sobre nós</a></li>
+                    <li><a href="/assets/contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="header-mobile">
+            <img src="img/logo_header_branco.png" alt="Logo do cabeçalho">
+            <nav class="navbar-mobile">
+                <button><img src="img/logo_header_mobile.png" alt=""></button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="first-section">
+            <div class="novidades">
+                <div class="text-novidades">
+                    <h1>Novidades da semana</h1>
+                    <div class="text-novidades-2">
+                        <h3>A cabeça do santo</h3>
+                        <h4>Socorro Acioli - 2014</h4>
+                    </div>
+                </div>
+                <div class="images-novidades galeria-container">
+                    <div class="item-galeria active">
+                        <img class="capa-livro" src="img/acervo/livro_1_novidades.png" alt="Livro 1 Novidades">
+                        <img class="arrow-right" src="img/acervo/ArrowCircleUpCinza.png" alt="Detalhes">
+                    </div>
+                    <div class="item-galeria">
+                        <img class="capa-livro" src="img/acervo/livro_2_novidades.png" alt="Livro 2 Novidades">
+                        <img class="arrow-right" src="img/acervo/ArrowCircleUp.png" alt="Detalhes">
+                    </div>
+                    <div class="item-galeria">
+                        <img class="capa-livro" src="img/acervo/livro_3_novidades.png" alt="Livro 3 Novidades">
+                        <img class="arrow-right" src="img/acervo/ArrowCircleUp.png" alt="Detalhes">
+                    </div>
+                    <div class="item-galeria">
+                        <img class="capa-livro" src="img/acervo/livro_4_novidades.png" alt="Livro 4 Novidades">
+                        <img class="arrow-right" src="img/acervo/ArrowCircleUpCinza.png" alt="Detalhes">
+                    </div>
+                    <div class="item-galeria">
+                        <img class="capa-livro" src="img/acervo/livro_5_novidades.png" alt="Livro 5 Novidades">
+                        <img class="arrow-right" src="img/acervo/ArrowCircleUp.png" alt="Detalhes">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="second-section">
+            <div class="catalogos">
+                <div> 
+                    <h2>Veja nosso catálogo</h2>
+                    <form action="">
+                        <div class="busca-catalogos">
+                            <input type="text" placeholder="Fazer busca">
+                            <div class="select_catalogos" id="filtros-dropdown"> 
+                                <select name="genero" id="genero">
+                                    <option value="">Gênero</option>
+                                    <option value="romance">Romance</option>
+                                    <option value="terror">Terror</option>
+                                    <option value="aventura">Aventura</option>
+                                </select>
+                                <select name="editora" id="editora">
+                                    <option value="">Editora</option>
+                                    <option value="editora-1">Editora 1</option>
+                                    <option value="editora-2">Editora 2</option>
+                                </select>
+                                <button type="submit" class="btn_buscar">Buscar <img src="img/acervo/icon_buscar_catalogos.png" alt=""></button>
+                            </div>
+
+                            <button type="submit" class="btn_buscar_mobile_lupa">
+                                <img src="img/acervo/icon_buscar_catalogos.png" alt="Buscar">
+                            </button>
+                            
+                            <button type="button" class="btn_filtro_mobile" id="filtro-toggle-btn">
+                                <img src="img/acervo/icon_select.png" alt="Filtros">
+                            </button>
+                        </div> 
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="books-content">
+                <ul class="grid">
+                    <button class="btn-adicionar">
+                        <span class="texto-botao">Adicionar material</span>
+                        <img src="img/acervo/icon_btn_add.png" alt="">
+                    </button>
+
+                    <!-- MODAL BOTAO ADICIONAR -->
+                    <div class="modal-overlay" id="modal-adicionar">
+                        <div class="modal-content">
+                            <button class="modal-close-btn" id="modal-fechar">&times;</button>
+                            <h2>Adicionar material ao catálogo</h2>
+                            <form class="modal-form">
+                                <div class="form-coluna-esquerda">
+                                    <div class="cover-upload-area">
+                                        <img src="img/acervo/bg_add_capa.png" alt="Upload" class="placeholder-icon"> <button type="button" class="btn-add-cover">
+                                            Adicionar capa
+                                        <img src="img/acervo/icone_add_capa.png" alt=""> </button>
+                                    </div>
+                                </div>
+                                <div class="form-coluna-direita">
+                                    <div class="form-group grupo-maior">
+                                        <label for="titulo">Título no material:</label>
+                                        <input type="text" id="titulo" placeholder="Inserir o título do material">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="paginas">Número de páginas</label>
+                                        <input type="text" id="paginas" placeholder="000">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="isbn">ISBN</label>
+                                        <input type="text" id="isbn" placeholder="xxxxxxxx">
+                                    </div>
+                                    <div class="form-group grupo-maior">
+                                        <label for="autor">Autor:</label>
+                                        <input type="text" id="autor" placeholder="Machado de Assis">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ano">Ano de publicação</label>
+                                        <input type="text" id="ano" placeholder="000">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editora">Editora</label>
+                                        <select id="editora">
+                                            <option value="">Selecionar</option>
+                                            <option value="editora-1">Editora 1</option>
+                                            <option value="editora-2">Editora 2</option>
+                                            <option value="editora-3">Editora 3</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group full-width">
+                                        <label for="resumo">Resumo do material:</label>
+                                        <textarea id="resumo" placeholder="Inserir um breve resumo do material."></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-botoes">
+                                    <button type="button" class="btn-cancelar" id="btn-cancelar">Cancelar</button>
+                                    <button type="submit" class="btn-salvar">
+                                        Salvar
+                                    <img src="img/acervo/icone_salvar_modal.png" alt=""> </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- MODAL LIVROS -->
+                     <div class="modal-overlay" id="modal-ver-livro">
+                        <div class="modal-view-card">
+                            <button class="modal-close-btn" id="fechar-ver-livro"><img src="/assets/img/acervo/XCircle.png" alt=""></button>
+                            <div class="modal-view-img-container">
+                                <img src="" alt="" id="modal-img-capa">
+                            </div>
+                            <div class="modal-view-info-container">
+                                <h2 id="modal-titulo">Título do Livro</h2>
+                                <p class="modal-autor" id="modal-autor">Autor, Ano</p>
+                                <p class="modal-descricao" id="modal-descricao">
+                                    <!-- Descrição do livro vai aqui-->
+                                </p>
+                                <div class="modal-meta">
+                                    <p>páginas: <span id="modal-paginas">000</span></p>
+                                    <h4 id="modal-editora">Editora</h4>
+                                </div>
+                                <button class="btn-editar-modal" id="btn-editar-modal">
+                                    Editar <img src="img/acervo/icone_editar_modal_livros.png" alt="Editar">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MODAL EDITAR LIVROS -->
+
+                    <div class="modal-overlay" id="modal-editar-material">
+                        <div class="modal-content">
+                            <button class="modal-close-btn" id="fechar-editar-material">&times;</button>
+                            <h2>Editar material</h2>
+                            <form class="modal-form">
+                                <div class="form-coluna-esquerda">
+                                    <div class="edit-cover-preview">
+                                        <img id="edit-capa-preview" src="" alt="Capa do livro">
+                                    </div>
+                                </div>
+                                <div class="form-coluna-direita">
+                                    <div class="form-group">
+                                        <label for="edit-titulo">Título no material:</label>
+                                        <input type="text" id="edit-titulo">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="edit-paginas">Número de páginas</label>
+                                        <input type="text" id="edit-paginas">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="edit-isbn">ISBN</label>
+                                        <input type="text" id="edit-isbn">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="edit-autor">Autor:</label>
+                                        <input type="text" id="edit-autor">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="edit-ano">Ano de publicação</label>
+                                        <input type="text" id="edit-ano">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="edit-editora">Editora</label>
+                                        <select id="edit-editora">
+                                            <option value="">Selecionar</option>
+                                            <option value="Companhia das Letras">Companhia das Letras</option>
+                                            <option value="Editora 1">Editora 1</option>
+                                            <option value="Editora 2">Editora 2</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group full-width">
+                                        <label for="edit-resumo">Resumo do material:</label>
+                                        <textarea id="edit-resumo"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-botoes form-botoes-editar">
+                                    <button type="button" class="btn-deletar" id="btn-deletar-material">
+                                        Deletar 
+                                        <img src="img/acervo/icon_deletar_modal_livros.png" alt="Deletar">
+                                    </button>
+                                    <div>
+                                        <button type="button" class="btn-cancelar" id="cancelar-editar-material">Cancelar</button>
+                                        <button type="submit" class="btn-salvar">
+                                            Salvar
+                                            <img src="img/acervo/icone_salvar_modal.png" alt="Salvar">
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- OS BOOKS -->
+
+                    <li class="items-book">
+                        <img src="img/acervo/CAPA LIVRO.png" alt="Capa do livro A Cabeça do Santo">
+                        <div class="book-overlay">
+                            <div class="book-overlay-info">
+                                <h3>Título do livro</h3>
+                                <p>Autor do livro, 2000</p>
+                            </div>
+                            <a href="#" class="book-overlay-btn btn-ver-detalhes"
+                                data-imagem="img/acervo/CAPA LIVRO.png"
+                                data-titulo="A Cabeça do Santo"
+                                data-autor="Socorro Acioli, 2016"
+                                data-descricao="Um jovem que viaja para a cidade de Candeia para cumprir um pedido de sua mãe moribunda: encontrar o pai desconhecido."
+                                data-paginas="176"
+                                data-editora="Companhia das Letras"
+                                data-isbn="123456789"
+                                data-ano="2016">
+                                
+                                <img src="img/acervo/icon_hover_livros.png" alt="Visualizar">
+                             </a>
+                        </div>
+                    </li>
+                    <li class="items-book">
+                        <img src="img/acervo/CAPA LIVRO-1.png" alt="">
+                        <div class="book-overlay">
+                            <div class="book-overlay-info">
+                                <h3>Título do livro</h3>
+                                <p>Autor do livro, 2000</p>
+                            </div>
+                            <a href="#" class="book-overlay-btn btn-ver-detalhes"
+                                data-imagem="img/acervo/CAPA LIVRO.png"
+                                data-titulo="Título do livro"
+                                data-autor="Autor, 2000"
+                                data-descricao="Uma descrição do livro"
+                                data-paginas="000"
+                                data-editora="Editora do livro"
+                                data-isbn="123456789"
+                                data-ano="2016">
+                                <img src="img/acervo/icon_hover_livros.png" alt="Visualizar">
+                             </a>
+                        </div>
+                    </li>
+                    <li class="items-book">
+                        <img src="img/acervo/CAPA LIVRO-2.png" alt="">
+                        <div class="book-overlay">
+                            <div class="book-overlay-info">
+                                <h3>Título do livro</h3>
+                                <p>Autor do livro, 2000</p>
+                            </div>
+                            <a href="#" class="book-overlay-btn btn-ver-detalhes"
+                                data-imagem="img/acervo/CAPA LIVRO.png"
+                                data-titulo="Título do livro"
+                                data-autor="Autor, 2000"
+                                data-descricao="Uma descrição do livro"
+                                data-paginas="000"
+                                data-editora="Editora do livro"
+                                data-isbn="123456789"
+                                data-ano="2016">
+                                <img src="img/acervo/icon_hover_livros.png" alt="Visualizar">
+                             </a>
+                        </div>
+                    </li>
+                    <li class="items-book">
+                        <img src="img/acervo/CAPA LIVRO-3.png" alt="">
+                        <div class="book-overlay">
+                            <div class="book-overlay-info">
+                                <h3>Título do livro</h3>
+                                <p>Autor do livro, 2000</p>
+                            </div>
+                            <a href="#" class="book-overlay-btn btn-ver-detalhes"
+                                data-imagem="img/acervo/CAPA LIVRO.png"
+                                data-titulo="Título do livro"
+                                data-autor="Autor, 2000"
+                                data-descricao="Uma descrição do livro"
+                                data-paginas="000"
+                                data-editora="Editora do livro"
+                                data-isbn="123456789"
+                                data-ano="2016">
+                                <img src="img/acervo/icon_hover_livros.png" alt="Visualizar">
+                             </a>
+                        </div>
+                    </li>
+                    <li class="items-book">
+                        <img src="img/acervo/CAPA LIVRO-4.png" alt="">
+                        <div class="book-overlay">
+                            <div class="book-overlay-info">
+                                <h3>Título do livro</h3>
+                                <p>Autor do livro, 2000</p>
+                            </div>
+                            <a href="#" class="book-overlay-btn btn-ver-detalhes"
+                                data-imagem="img/acervo/CAPA LIVRO.png"
+                                data-titulo="Título do livro"
+                                data-autor="Autor, 2000"
+                                data-descricao="Uma descrição do livro"
+                                data-paginas="000"
+                                data-editora="Editora do livro"
+                                data-isbn="123456789"
+                                data-ano="2016">
+                                <img src="img/acervo/icon_hover_livros.png" alt="Visualizar">
+                             </a>
+                        </div>
+                    </li>
+                    <li class="items-book">
+                        <img src="img/acervo/CAPA LIVRO-5.png" alt="">
+                        <div class="book-overlay">
+                            <div class="book-overlay-info">
+                                <h3>Título do livro</h3>
+                                <p>Autor do livro, 2000</p>
+                            </div>
+                            <a href="#" class="book-overlay-btn btn-ver-detalhes"
+                                data-imagem="img/acervo/CAPA LIVRO.png"
+                                data-titulo="Título do livro"
+                                data-autor="Autor, 2000"
+                                data-descricao="Uma descrição do livro"
+                                data-paginas="000"
+                                data-editora="Editora do livro"
+                                data-isbn="123456789"
+                                data-ano="2016">
+                                <img src="img/acervo/icon_hover_livros.png" alt="Visualizar">
+                             </a>
+                        </div>
+                    </li>
+                    <li class="items-book">
+                        <img src="img/acervo/CAPA LIVRO-6.png" alt="">
+                        <div class="book-overlay">
+                            <div class="book-overlay-info">
+                                <h3>Título do livro</h3>
+                                <p>Autor do livro, 2000</p>
+                            </div>
+                            <a href="#" class="book-overlay-btn btn-ver-detalhes"
+                                data-imagem="img/acervo/CAPA LIVRO.png"
+                                data-titulo="Título do livro"
+                                data-autor="Autor, 2000"
+                                data-descricao="Uma descrição do livro"
+                                data-paginas="000"
+                                data-editora="Editora do livro"
+                                data-isbn="123456789"
+                                data-ano="2016">
+                                <img src="img/acervo/icon_hover_livros.png" alt="Visualizar">
+                             </a>
+                        </div>
+                    </li>
+                    <li class="items-book">
+                        <img src="img/acervo/CAPA LIVRO-7.png" alt="">
+                        <div class="book-overlay">
+                            <div class="book-overlay-info">
+                                <h3>Título do livro</h3>
+                                <p>Autor do livro, 2000</p>
+                            </div>
+                            <a href="#" class="book-overlay-btn btn-ver-detalhes"
+                                data-imagem="img/acervo/CAPA LIVRO.png"
+                                data-titulo="Título do livro"
+                                data-autor="Autor, 2000"
+                                data-descricao="Uma descrição do livro"
+                                data-paginas="000"
+                                data-editora="Editora do livro"
+                                data-isbn="123456789"
+                                data-ano="2016">
+                                <img src="img/acervo/icon_hover_livros.png" alt="Visualizar">
+                             </a>
+                        </div>
+                    </li>
+                    <li class="items-book">
+                        <img src="img/acervo/CAPA LIVRO-8.png" alt="">
+                        <div class="book-overlay">
+                            <div class="book-overlay-info">
+                                <h3>Título do livro</h3>
+                                <p>Autor do livro, 2000</p>
+                            </div>
+                            <a href="#" class="book-overlay-btn btn-ver-detalhes"
+                                data-imagem="img/acervo/CAPA LIVRO.png"
+                                data-titulo="Título do livro"
+                                data-autor="Autor, 2000"
+                                data-descricao="Uma descrição do livro"
+                                data-paginas="000"
+                                data-editora="Editora do livro"
+                                data-isbn="123456789"
+                                data-ano="2016">
+                                <img src="img/acervo/icon_hover_livros.png" alt="Visualizar">
+                             </a>
+                        </div>
+                    </li>
+                    <li class="items-book">
+                        <img src="img/acervo/CAPA LIVRO-9.png" alt="">
+                        <div class="book-overlay">
+                            <div class="book-overlay-info">
+                                <h3>Título do livro</h3>
+                                <p>Autor do livro, 2000</p>
+                            </div>
+                            <a href="#" class="book-overlay-btn btn-ver-detalhes"
+                                data-imagem="img/acervo/CAPA LIVRO.png"
+                                data-titulo="Título do livro"
+                                data-autor="Autor, 2000"
+                                data-descricao="Uma descrição do livro"
+                                data-paginas="000"
+                                data-editora="Editora do livro"
+                                data-isbn="123456789"
+                                data-ano="2016">
+                                <img src="img/acervo/icon_hover_livros.png" alt="Visualizar">
+                             </a>
+                        </div>
+                    </li>
+                    <li class="items-book">
+                        <img src="img/acervo/CAPA LIVRO-10.png" alt="">
+                        <div class="book-overlay">
+                            <div class="book-overlay-info">
+                                <h3>Título do livro</h3>
+                                <p>Autor do livro, 2000</p>
+                            </div>
+                            <a href="#" class="book-overlay-btn btn-ver-detalhes"
+                                data-imagem="img/acervo/CAPA LIVRO.png"
+                                data-titulo="Título do livro"
+                                data-autor="Autor, 2000"
+                                data-descricao="Uma descrição do livro"
+                                data-paginas="000"
+                                data-editora="Editora do livro"
+                                data-isbn="123456789"
+                                data-ano="2016">
+                                <img src="img/acervo/icon_hover_livros.png" alt="Visualizar">
+                             </a>
+                        </div>
+                    </li>
+                    <li class="items-book">
+                        <img src="img/acervo/CAPA LIVRO-11.png" alt="">
+                        <div class="book-overlay">
+                            <div class="book-overlay-info">
+                                <h3>Título do livro</h3>
+                                <p>Autor do livro, 2000</p>
+                            </div>
+                            <a href="#" class="book-overlay-btn btn-ver-detalhes"
+                                data-imagem="img/acervo/CAPA LIVRO.png"
+                                data-titulo="Título do livro"
+                                data-autor="Autor, 2000"
+                                data-descricao="Uma descrição do livro"
+                                data-paginas="000"
+                                data-editora="Editora do livro"
+                                data-isbn="123456789"
+                                data-ano="2016">
+                                <img src="img/acervo/icon_hover_livros.png" alt="Visualizar">
+                             </a>
+                        </div>
+                    </li>
+                    <li class="items-book">
+                        <img src="img/acervo/CAPA LIVRO-12.png" alt="">
+                        <div class="book-overlay">
+                            <div class="book-overlay-info">
+                                <h3>Título do livro</h3>
+                                <p>Autor do livro, 2000</p>
+                            </div>
+                            <a href="#" class="book-overlay-btn btn-ver-detalhes"
+                                data-imagem="img/acervo/CAPA LIVRO.png"
+                                data-titulo="Título do livro"
+                                data-autor="Autor, 2000"
+                                data-descricao="Uma descrição do livro"
+                                data-paginas="000"
+                                data-editora="Editora do livro"
+                                data-isbn="123456789"
+                                data-ano="2016">
+                                <img src="img/acervo/icon_hover_livros.png" alt="Visualizar">
+                             </a>
+                        </div>
+                    </li>
+                    <li class="items-book">
+                        <img src="img/acervo/CAPA LIVRO-13.png" alt="">
+                        <div class="book-overlay">
+                            <div class="book-overlay-info">
+                                <h3>Título do livro</h3>
+                                <p>Autor do livro, 2000</p>
+                            </div>
+                            <a href="#" class="book-overlay-btn btn-ver-detalhes"
+                                data-imagem="img/acervo/CAPA LIVRO.png"
+                                data-titulo="Título do livro"
+                                data-autor="Autor, 2000"
+                                data-descricao="Uma descrição do livro"
+                                data-paginas="000"
+                                data-editora="Editora do livro"
+                                data-isbn="123456789"
+                                data-ano="2016">
+                                <img src="img/acervo/icon_hover_livros.png" alt="Visualizar">
+                             </a>
+                        </div>
+                    </li>
+                    <li class="items-book">
+                        <img src="img/acervo/CAPA LIVRO-14.png" alt="">
+                        <div class="book-overlay">
+                            <div class="book-overlay-info">
+                                <h3>Título do livro</h3>
+                                <p>Autor do livro, 2000</p>
+                            </div>
+                            <a href="#" class="book-overlay-btn btn-ver-detalhes"
+                                data-imagem="img/acervo/CAPA LIVRO.png"
+                                data-titulo="Título do livro"
+                                data-autor="Autor, 2000"
+                                data-descricao="Uma descrição do livro"
+                                data-paginas="000"
+                                data-editora="Editora do livro"
+                                data-isbn="123456789"
+                                data-ano="2016">
+                                <img src="img/acervo/icon_hover_livros.png" alt="Visualizar">
+                             </a>
+                        </div>
+                    </li>
+                </ul>
+
+            <div class="paginacao-books">
+                <ul>
+                    <li><button class="btn-numeros-img"><img src="img/acervo/seta-left.png" alt=""></button></li>
+                    <!-- <li><a href="#">1</a></li> -->
+                     <li><button class="btn-numeros btn-numero-1">1</button></li>
+                    <!-- <li><a href="#" class="active">2</a></li> -->
+                     <li><button class="btn-numeros btn-numero-2 active">2</button></li>
+                    <!-- <li><a href="#">3</a></li> -->
+                     <li><button class="btn-numeros btn-numero-3">3</button></li>
+                    <!-- <li><a href="#"><img src="img/acervo/seta-right.png"></a></li>  -->
+                    <li><button class="btn-numeros-img"><img src="img/acervo/seta-right.png" alt=""></button></li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="img/logo_footer.png" alt="Logotipo rosa rodapé">
+                <p>Aventuras literárias</p>
+            </div>
+            <div class="footer-items">
+                <div>
+                    <h3>Contato</h3>
+                    <ul class="footer-list">
+                        <li><img src="img/icon_celular_footer.png" alt=""><a href="">(84) 9 9999-2222</a></li>
+                        <li><img src="img/icon_footer_site.png" alt=""><a href="">www.theka.com.br</a></li>
+                        <li><img src="img/icon_footer_local.png" alt=""><a href="">Natal, RN</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Redes Sociais</h3>
+                    <ul class="footer-list">
+                        <li><img src="img/icon_footer_insta.png" alt=""><a href="">@theka.biblioteca</a></li>
+                        <li><img src="img/icon_footer_tiktok.png" alt=""><a href="">@theka.biblioteca</a></li>
+                        <li><img src="img/icon_footer_x.png" alt=""><a href="">@theka.biblioteca</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Ajuda</h3>
+                    <ul class="footer-list">
+                        <li><img src="img/icon_footer_ajuda.png" alt=""><a href="">Central de ajuda</a></li>
+                        <li><img src="img/icon_footer_faq.png" alt=""><a href="">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-direitos">
+            <p>Mockup desenvolvido por EJECT</p>
+        </div>
+    </footer>
+
+</body>
+</html>

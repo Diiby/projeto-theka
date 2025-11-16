@@ -1,0 +1,129 @@
+.modal-view-card {
+    background-color: #FFFFFF;
+    width: 100%;
+    max-width: 700px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    font-family: 'Inter', sans-serif;
+    margin-top: 150px;
+}
+
+.modal-view-img-container {
+    flex: 2;
+    display: flex;
+}
+
+.modal-view-img-container img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.modal-view-info-container {
+    flex: 3;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.modal-view-card .modal-close-btn {
+    position: absolute;
+    cursor: pointer;
+    z-index: 100; 
+}
+
+.modal-view-info-container h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+    color: #000;
+}
+
+.modal-autor {
+    font-size: 1.25rem;
+    color: #5A5A5A;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.modal-descricao {
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: 1.4;
+    color: #000000;
+    margin-bottom: 30px;
+    max-height: 100px;
+    overflow-y: auto; 
+}
+
+.modal-meta p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #000000;
+    font-weight: 300;
+}
+
+.modal-meta h4 {
+    margin: 13px 0 0 0;
+    font-size: 1.25rem;
+    color: #7E7E7D;
+    font-weight: 700;
+}
+
+.btn-editar-modal {
+    position: absolute;
+    bottom: 21px;
+    right: 30px;
+    background-color: #393939;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 100px;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease; 
+    z-index: 11; 
+}
+
+/* MODAL BOTAO EDITAR */
+
+.btn-editar-modal img {
+    width: 24px;
+    height: 24px;
+}
+
+.modal-view-card.edit-mode .btn-editar-modal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.modal-view-card.edit-mode .modal-view-info-container {
+    padding-bottom: 50px;
+}
+
+@media screen and (max-width: 768px) {
+    .modal-view-card {
+        flex-direction: column;
+        max-width: 90%;
+        height: 90vh;
+        overflow-y: auto;
+        margin: 0 auto;
+    }
+
+    .modal-view-img-container {
+        height: 300px;
+        flex: none;
+    }
+}

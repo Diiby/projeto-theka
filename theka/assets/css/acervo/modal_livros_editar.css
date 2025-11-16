@@ -1,0 +1,82 @@
+.edit-cover-preview {
+    width: 100%;
+    max-width: 237px; 
+    border-radius: 16px; 
+    overflow: hidden;
+    margin: 0 auto; 
+}
+
+.edit-cover-preview img {
+    width: 100%;
+    height: auto; 
+    display: block;
+    
+}
+
+.form-botoes-editar > div {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-deletar {
+    background-color: #81013A;
+    color: #FFFFFF;
+    border-radius: 100px;
+    padding: 12.5px 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    max-width: 124px;
+    align-items: center;
+    gap: 8px;
+    margin-right: 450px;
+}
+
+.btn-deletar img {
+    width: 24px; 
+    height: 24px;
+}
+
+
+@media screen and (max-width: 830px) {
+    
+    .form-botoes-editar {
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        gap: 10px;
+        justify-content: normal; 
+    }
+
+    .form-botoes-editar > div { 
+        display: contents; 
+    }
+
+    .form-botoes-editar .btn-deletar {
+        grid-column: 1 / 2;  
+        grid-row: 1;         
+        width: 100%;        
+        justify-content: center; 
+        margin-right: 0;
+    }
+    
+    .form-botoes-editar .btn-salvar {
+        grid-column: 2 / 3;  
+        grid-row: 1;         
+        width: 100%;        
+        justify-content: center; 
+        max-width: 124px;
+        position: absolute;
+        right: 15px;
+        bottom: 102px;
+    }
+
+    .form-botoes-editar .btn-cancelar {
+        grid-column: 1 / -1; 
+        grid-row: 2;         
+        width: 100%;         
+        display: flex;    
+        justify-content: center;
+    }
+}

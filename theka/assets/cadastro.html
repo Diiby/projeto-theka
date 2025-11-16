@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/cadastro.css">
+    <title>Cadastro</title>
+</head>
+<body>
+    
+    <main>
+        <section class="container">
+            <div class="img-container">
+                <img class="img-main" src="img/MASCOTE.png" alt="Imagem principal perna e tênis">
+                <div>
+                    <img class="logo" src="img/LOGOTIPO.png" alt="Logotipo">
+                </div>
+            </div>
+
+            <div class="login-container">
+                <div class="login">
+                    <h1>Cadastro</h1>
+                    <form id="cadastroForm" action="">
+                        <label for="nameCompleto">Nome completo</label>
+                        <input type="text" id="nameCompleto" name="nameCompleto" required placeholder="Seu nome completo"> 
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required placeholder="seuemail@email.com">
+                        <label for="password">Senha</label>
+                        <div class="password_content">
+                            <input type="password" id="password" name="password" required placeholder="********">
+                            <button id="toggleSenha" type="button" class="img-icon">
+                                <img src="img/ICONS.png" alt="icone visão">
+                            </button>
+                        </div>
+                        <label for="confirmPassword">Confirmar senha</label>
+                        <div class="password_content">
+                            <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="********">
+                            <button id="toggleConfirmeSenha" type="button" class="img-icon">
+                                <img src="img/ICONS.png" alt="icone visão">
+                            </button>
+                        </div>
+                        <div class="btn">
+                            <a href="/assets/login.html" class="btn-voltar">Voltar</a>
+                            <button type="submit" class="btn-enviar">Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="js/cadastro/cadastro.js"></script>
+</body>
+</html>

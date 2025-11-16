@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/contato.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <title>Contato</title>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <img src="img/logo_header_branco.png" alt="Logo do cabeçalho">
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/inicio.html">Início</a></li>
+                    <li><a href="/assets/acervo.html">Acervo</a></li>
+                    <li><a href="/assets/sobre_nos.html">Sobre nós</a></li>
+                    <li><a href="/assets/contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="header-mobile">
+            <img src="img/logo_header_branco.png" alt="Logo do cabeçalho">
+            <nav class="navbar-mobile">
+                <button><img src="img/logo_header_mobile.png" alt=""></button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section-contato">
+            <h1>Contato</h1>
+            <div class="section-content">
+                <div class="localizacao">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.0959539127116!2d-35.21424572427283!3d-5.842098757577458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b2ff7f3d2f608f%3A0xd58db53fc452bd36!2sNatal%20Shopping!5e0!3m2!1spt-PT!2sbr!4v1762287920243!5m2!1spt-PT!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="btn-localizacao">
+                        <button class="btn-natal-shopping ativo">Unidades Natal Shopping</button>
+                        <button class="btn-midway">Unidades Midway</button>
+                    </div>
+                    <div class="endereco">
+                        <p>Avenida Senador Salgado Filho, 2234, Av. das Brancas Dunas, 47 - Candelária, Natal - RN, 59064-900</p>
+                    </div>
+                </div>
+                <div class="contato">
+                    <h3 class="contact-us">Vem falar com a gente!</h3>
+                    <form action="" class="contato-form">
+                        <label for="nameCompleto">Seu nome</label>
+                        <input type="text" id="nameCompleto" name="nameCompleto" required placeholder="Joao Mario"> 
+                        <label for="idade">Idade</label>
+                        <input type="number" id="idade" name="idade" required placeholder="23">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required placeholder="joao.mario@gmail.com">
+                        <label for="msg">Mensagem</label>
+                        <textarea name="msg" id="msg" class="input-padrao" required placeholder="Escreva a sua mensagem."></textarea>
+                        <div class="btn-contato">
+                            <button type="submit" id="btn-cancelar">Cancelar</button>
+                            <button type="submit" id="btn-enviar">Enviar <img src="img/contato/img_icone_enviar.png" alt=""></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="img/logo_footer.png" alt="Logotipo rosa rodapé">
+                <p>Aventuras literárias</p>
+            </div>
+            <div class="footer-items">
+                <div>
+                    <h3>Contato</h3>
+                    <ul class="footer-list">
+                        <li><img src="img/icon_celular_footer.png" alt=""><a href="">(84) 9 9999-2222</a></li>
+                        <li><img src="img/icon_footer_site.png" alt=""><a href="">www.theka.com.br</a></li>
+                        <li><img src="img/icon_footer_local.png" alt=""><a href="">Natal, RN</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Redes Sociais</h3>
+                    <ul class="footer-list">
+                        <li><img src="img/icon_footer_insta.png" alt=""><a href="">@theka.biblioteca</a></li>
+                        <li><img src="img/icon_footer_tiktok.png" alt=""><a href="">@theka.biblioteca</a></li>
+                        <li><img src="img/icon_footer_x.png" alt=""><a href="">@theka.biblioteca</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Ajuda</h3>
+                    <ul class="footer-list">
+                        <li><img src="img/icon_footer_ajuda.png" alt=""><a href="">Central de ajuda</a></li>
+                        <li><img src="img/icon_footer_faq.png" alt=""><a href="">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-direitos">
+            <p>Mockup desenvolvido por EJECT</p>
+        </div>
+    </footer>
+    
+</body>
+</html>

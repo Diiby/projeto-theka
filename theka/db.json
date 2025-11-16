@@ -1,0 +1,22 @@
+{
+  "usuarios": [
+    {
+      "id": "4a5d",
+      "nome": "Daniel Rannyeri da Silva Rocha",
+      "email": "test@test.com",
+      "senha": "123"
+    },
+    {
+      "id": "cd70",
+      "nome": "Davi",
+      "email": "davi@davi.com",
+      "senha": "12345"
+    },
+    {
+      "id": "f76e",
+      "nome": "Lucas",
+      "email": "lucas@lucas.com",
+      "senha": "123"
+    }
+  ]
+}

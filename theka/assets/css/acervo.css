@@ -1,0 +1,544 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+main {
+    padding: 0 16px;
+}
+
+.first-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* padding: 40px; */
+}
+
+.novidades {
+    display: flex;
+    justify-content: center;
+    gap: 33px;
+    margin: 90px 0 154px 0;
+}
+
+.text-novidades {
+    max-width: 532px;
+    display: flex;
+    flex-direction: column;
+    gap: 95px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+}
+
+.text-novidades h1 {
+    font-size: 6.45rem;
+    color: #81013A;
+}
+
+.text-novidades-2 {
+    color: #393939;
+}
+
+.text-novidades-2 h3 {
+    font-size: 2.5rem;
+}
+
+.text-novidades-2 h4 {
+    font-size: 1.25rem;
+}
+
+
+.galeria-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    gap: 10px;  
+    height: 400px;
+}
+
+.item-galeria {
+    position: relative; 
+    width: 80px;
+    height: 100%;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    overflow: hidden; 
+}
+
+.item-galeria.active {
+    width: 263px;
+}
+
+.capa-livro {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem preencha sem distorcer */
+    display: block;    /* Remove espaços extras indesejados */
+    border-radius: 14px; 
+}
+
+.arrow-right {
+    position: absolute; 
+    top: 10px;
+    right: 10px;
+    width: 40px; 
+    height: 40px;
+    z-index: 2; 
+    transition: transform 0.3s ease;
+}
+
+.item-galeria.active .arrow-right {
+    transform: rotate(90deg);
+}
+
+
+/* Segunda seção */
+.second-section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.catalogos {
+    margin-bottom: 71px;
+}
+
+.catalogos h2 {
+    color: #81013A;
+    font-size: 4rem;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.busca-catalogos {
+    width: 100%; 
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    border: 2px solid #81013A;
+    border-radius: 100px;
+    padding: 24px 30px;
+    font-family: "Inter", sans-serif;
+    flex-grow: 1;
+    position: relative;
+}
+
+.busca-catalogos input {
+    border: none;
+    outline: none;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #7E7E7D;
+    flex-grow: 1;
+    width: 100px; 
+}
+
+.select_catalogos {
+    display: flex;
+    gap: 7px;
+    align-items: center; 
+}
+
+.busca-catalogos select {
+    color: #81013A;
+    font-size: 0.875rem;
+    font-weight: 300;
+    border: 2px solid #81013A;
+    border-radius: 100px;
+    width: 201px;
+    height: 44px;
+    padding: 12px 20px;
+    appearance: none;
+    background-image: url("/assets/img/acervo/icon_select_catalogos.png");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+}
+
+#genero {
+    margin-left: 20px;
+}
+
+.busca-catalogos .btn_buscar {
+    display: flex;
+    align-items: center;
+    background-color: #81013A;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 100px;
+    padding: 10px 20px;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.btn_buscar_mobile_lupa,
+.btn_filtro_mobile {
+    display: none; 
+}
+
+
+/* BOOKS */
+
+.books-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* padding: 20px; */
+}
+
+.grid {
+    display: flex;
+    margin-bottom: 40px;
+    row-gap: 30px;
+    column-gap: 21px;
+    list-style: none;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+/* .items-book img {
+    width: 100%;
+} */
+ .items-book {
+    position: relative;
+    overflow: hidden; 
+    cursor: pointer;
+}
+
+.items-book img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.book-overlay {
+    position: absolute;
+    height: 110px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 20px;
+    background-color: #eaeaeae0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.4s ease-out;
+}
+
+.items-book:hover .book-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.book-overlay-info h3 {
+    font-family: 'Inter', sans-serif;
+    color: #000000;
+    font-size: 1rem;
+    font-weight: 900;
+    margin: 0;
+}
+
+.book-overlay-info p {
+    font-family: 'Inter', sans-serif;
+    color: #000000;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.book-overlay-btn {
+    background-color: #393939;
+    border-radius: 20px;
+    width: 50px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+}
+
+.book-overlay-btn img {
+    width: 19px;
+    height: 19px;
+}
+
+.btn-adicionar {
+    position: absolute;
+    display: flex;
+    width: 64px; 
+    height: 44px;
+    top: 244px;      
+    right: -32px;     
+    background-color: #81013A;
+    color: #ffffff;    
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    overflow: hidden; 
+    transition: width 0.4s ease-in-out;
+}
+
+.texto-botao {
+    /*  Começa "invisível" */
+    max-width: 0;
+    opacity: 0;
+    white-space: nowrap; 
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-adicionar img {
+    transition: margin 0.4s ease-in-out;
+}
+
+.btn-adicionar:hover {
+    width: 220px; 
+}
+
+/* O texto aparece */
+.btn-adicionar:hover .texto-botao {
+    max-width: 250px;
+    font-size: 1rem;
+    font-family: var(--family-dm-sans);
+    font-weight: 700;
+    opacity: 1;
+    margin-left: 20px; 
+}
+
+.btn-adicionar:hover img {
+    margin-left: 10px; 
+    margin-right: 20px; 
+}
+
+.paginacao-books {
+    display: flex;
+    justify-content: right;
+    margin-bottom: 156px;
+}
+
+.paginacao-books ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 17px;
+}
+
+.btn-numeros-img {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.btn-numeros {
+    color: #CACAC9;
+    font-weight: 700;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 62px;
+    height: 62px;
+    border-radius: 100%;
+    font-family: "DM Sans", sans-serif;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* Página Ativa */
+.btn-numeros.active {
+    background-color: #81013A;
+    color: #ffffff;
+}
+
+.second-section-mobile {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .select_catalogos {
+        display: none; 
+    }
+
+    .catalogos h2 {
+        font-size: 2.5rem;
+    }
+
+    .busca-catalogos {
+        border: none;
+        padding: 0;
+        gap: 10px; 
+    }
+
+    .busca-catalogos input {
+        height: 64px;
+        border-radius: 50px;
+        border: 2px solid #81013A; 
+        padding: 10px 180px 10px 20px; 
+        font-size: 1.125rem;
+    }
+    
+    #genero {
+        margin-left: 0;
+    }
+   
+    .btn_buscar_mobile_lupa {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        right: 80px;
+        top: 12px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #81013A;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn_buscar_mobile_lupa img {
+        width: 20px;
+        height: 20px;
+        filter: brightness(0) invert(1);
+    }
+
+    .btn_filtro_mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0; /* Impede que ele encolha */
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #81013A;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn_filtro_mobile img {
+        width: 24px;
+        height: 24px;
+        filter: brightness(0) invert(1);
+    }
+
+    .select_catalogos.show {
+        display: flex; 
+        flex-direction: column; 
+        position: absolute;
+        top: 60px; 
+        right: 0;
+        width: 200px; 
+        background: white;
+        border-radius: 8px;
+        padding: 10px;
+        z-index: 100;
+        gap: 10px;
+        align-items: stretch;
+    }
+
+    .select_catalogos.show select {
+        width: 100%;
+    }
+
+    .select_catalogos.show .btn_buscar {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .novidades {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .text-novidades {
+        display: contents;
+    }
+
+    .text-novidades h1 {
+        text-align: center;
+        margin-top: -25px;
+    }
+
+    .text-novidades-2 {
+        order: 3;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .novidades {
+        margin-bottom: 67px;
+    }
+
+    .text-novidades h1 {
+        font-size: 2.5rem;
+        text-align: left;
+        padding-left: 4px;
+    }
+
+    .galeria-container {
+        flex-direction: column;
+        height: 500px;
+        max-width: 450px;
+        gap: 10px;              
+    }
+
+    .item-galeria {
+        width: 263px;
+        height: 80px;   
+        opacity: 1;
+    }
+
+    .item-galeria.active {
+        width: 263px;    
+        height: 450px;
+        opacity: 1;
+    }
+
+    .capa-livro {
+        object-position: center top; 
+    }
+
+    .arrow-right {
+        top: 15px;
+        right: 15px;
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    
+    main {
+        padding: 0 10px;
+    }
+    
+    .grid {
+        margin: 0 auto 40px;
+        gap: 15px;
+    }
+
+    .items-book img {
+        max-width: 173px;
+    }
+
+    .btn-adicionar {
+        top: 224px;       
+        right: 0px;     
+    }
+
+    .paginacao-books {
+        justify-content: center;
+        margin-bottom: 70px;
+    }
+}
+
