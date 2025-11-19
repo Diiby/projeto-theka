@@ -52,6 +52,14 @@ main {
     height: 400px;
 }
 
+#galeria-livros {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    gap: 10px;  
+    height: 400px;
+}
+
 .item-galeria {
     position: relative; 
     width: 80px;

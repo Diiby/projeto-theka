@@ -1,77 +1,90 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. SELEÇÃO DOS ELEMENTOS ---
     const loginForm = document.getElementById('loginForm');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
-    const toggleSenhaButton = document.getElementById('toggleSenha'); // Botão do "olho"
+    const toggleSenhaButton = document.getElementById('toggleSenha');
 
-    // --- 2. LÓGICA DE SUBMIT DO LOGIN ---
     loginForm.addEventListener('submit', async (event) => {
-        // Impede que o formulário seja enviado da forma tradicional
         event.preventDefault(); 
 
         // Captura os valores dos inputs
-        const email = emailInput.value;
+        const login = emailInput.value; // espera-se o nome de usuário
         const senha = passwordInput.value;
 
-        // para não enviar dados vazios
-        if (!email || !senha) {
-            alert('Por favor, preencha o e-mail e a senha.');
+        // Validação de inputs
+        if (!login || !senha) {
+            alert('Por favor, preencha o campo de login e a senha.');
             return;
         }
 
-        // Busca "GET" o usuário pelo e-mail
+        // Endpoint
+        const LOGIN_URL = 'https://thekaapi.pythonanywhere.com/auth/token/'; 
+
+        const credenciais = {
+            username: login, 
+            password: senha 
+        };
+
         try {
-            const response = await fetch(`http://localhost:3000/usuarios?email=${email}`);
-            
-            if (!response.ok) {
-                throw new Error('Erro ao conectar com o servidor.');
-            }
+            const response = await fetch(LOGIN_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(credenciais),
+            });
 
-            const usuarios = await response.json();
+            const responseData = await response.json();
 
-            // Verifica se o usuário existe e se a senha está correta
-            if (usuarios.length === 0) {
-                // Usuário NÃO encontrado
-                alert('E-mail ou senha inválidos.');
-                return;
-            }
+            if (response.ok) {
+                // SUCESSO! Armazena os tokens de acesso e refresh
+                const accessToken = responseData.access; 
+                const refreshToken = responseData.refresh;
 
-            const usuario = usuarios[0]; 
+                if (accessToken) {
+                    // Armazena o token de acesso
+                    localStorage.setItem('authToken', accessToken); 
+                    
+                    // Armazena o token de refresh
+                    if (refreshToken) {
+                        localStorage.setItem('authRefresh', refreshToken);
+                    }
+                    
+                    alert('Login bem-sucedido! Token de acesso armazenado.');
+                    window.location.href = '/inicio.html';
+                
+                } else {
+                    alert('Login bem-sucedido, mas o token de acesso não foi encontrado na resposta do servidor.');
+                    window.location.href = '/inicio.html';
+                }
 
-            if (usuario.senha === senha) {
-                // SUCESSO! Senha correta.
-
-                localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
-                // Redireciona para a tela inicial
-                alert('Login bem-sucedido!');
-
-                window.location.href = '/inicio.html';
+            } else if (response.status === 400 || response.status === 401) {
+                // Credenciais inválidas
+                const errorMessage = responseData.detail || 'Nome de usuário ou senha inválidos.';
+                alert(errorMessage); 
+                console.error('Erro de credenciais:', responseData);
 
             } else {
-                // Senha INCORRETA
-                alert('E-mail ou senha inválidos.');
+                alert('Erro desconhecido no servidor. Tente novamente.');
+                console.error('Erro no servidor:', response.status, responseData);
             }
 
         } catch (error) {
-            console.error('Erro ao fazer login:', error);
-            alert('Falha na comunicação com o servidor. Tente novamente.');
+            console.error('Falha na comunicação:', error);
+            alert('Não foi possível conectar ao servidor. Verifique sua conexão.');
         }
         
     });
     
-    // MOSTRAR/ESCONDER SENHA
+    // MOSTRAR/ESCONDE SENHA
     if (toggleSenhaButton) {
         toggleSenhaButton.addEventListener('click', () => {
         
-            // Verifica o 'type' atual do input da senha
             const tipoAtual = passwordInput.getAttribute('type');
 
-            // Se for 'password', muda para 'text'. Se for 'text', muda para 'password'.
             if (tipoAtual === 'password') {
                 passwordInput.setAttribute('type', 'text');
-                // Mudar a imagem para um "olho cortado"
                 toggleSenhaButton.querySelector('img').src = 'img/EyeSlash.png';
             } else {
                 passwordInput.setAttribute('type', 'password');
@@ -81,3 +94,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+

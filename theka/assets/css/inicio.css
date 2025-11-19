@@ -146,6 +146,7 @@ main {
 .novidades img {
     transition: all 0.5s ease; 
     cursor: pointer;
+    border-radius: 20px;
 }
 
 .img-1 {
@@ -160,19 +161,19 @@ main {
     /* z-index: 2; */
     right: 0;
     position: absolute;
-    width: 76%;
+    width: 64%;
 }
 .img-3 {
     /* z-index: 3; */
     top: 40px;
     right: 15px;
     position: absolute;
-    width: 70%;
+    width: 64%;
 }
 
 .stack-bottom { z-index: 1; transform: rotate(0deg);}
-.stack-middle { z-index: 2; transform: rotate(2deg);}
-.stack-top { z-index: 3; transform: rotate(-2deg);}
+.stack-middle { z-index: 2; transform: rotate(2.5deg);}
+.stack-top { z-index: 3; transform: rotate(-2.5deg);}
 
 /* ---> SEÇÃO ESTATISTICA <--- */
 
@@ -432,26 +433,23 @@ main {
         /* margin-bottom: 400px; */
         padding-bottom: 10px;
     }
-
+    
     .img-1 {
         width: 32.5%;
         top: 20px;
         right: 50%; 
-        transform: translateX(45%);
     }
 
     .img-2 {
-        width: 37.5%;
+        width: 32.5%;
         top: 0;
         right: 50%;
-        transform: translateX(50%);
     }
 
     .img-3 {
-        width: 35%;
+        width: 32.5%;
         top: 40px;
         right: 50%;
-        transform: translateX(55%);
     }
 
     .link-2 {
@@ -519,22 +517,19 @@ main {
     .img-1 {
         width: 52%;
         top: 20px;
-        right: 50%; 
-        transform: translateX(45%);
+        right: 25%; 
     }
 
     .img-2 {
-        width: 60%;
+        width: 52%;
         top: 0;
-        right: 50%;
-        transform: translateX(50%);
+        right: 25%;
     }
 
     .img-3 {
-        width: 56%;
+        width: 52%;
         top: 40px;
-        right: 50%;
-        transform: translateX(55%);
+        right: 25%;
     }
 
     .link-2 {
@@ -606,12 +601,12 @@ main {
     }
 
     .img-2 {
-        width: 90%;
+        width: 78%;
         
     }
 
     .img-3 {
-        width: 84%;
+        width: 78%;
         
     }
 }

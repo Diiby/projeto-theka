@@ -36,13 +36,13 @@
             <h1>Contato</h1>
             <div class="section-content">
                 <div class="localizacao">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.0959539127116!2d-35.21424572427283!3d-5.842098757577458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b2ff7f3d2f608f%3A0xd58db53fc452bd36!2sNatal%20Shopping!5e0!3m2!1spt-PT!2sbr!4v1762287920243!5m2!1spt-PT!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe id="mapa-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.0959539127116!2d-35.21424572427283!3d-5.842098757577458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b2ff7f3d2f608f%3A0xd58db53fc452bd36!2sNatal%20Shopping!5e0!3m2!1spt-PT!2sbr!4v1762287920243!5m2!1spt-PT!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     <div class="btn-localizacao">
-                        <button class="btn-natal-shopping ativo">Unidades Natal Shopping</button>
-                        <button class="btn-midway">Unidades Midway</button>
+                        <button id="btn-natal-shopping" class="btn-natal-shopping ativo" onclick="mudarUnidade('natal')">Unidades Natal Shopping</button>
+                        <button id="btn-midway" class="btn-midway" onclick="mudarUnidade('midway')">Unidades Midway</button>
                     </div>
                     <div class="endereco">
-                        <p>Avenida Senador Salgado Filho, 2234, Av. das Brancas Dunas, 47 - Candelária, Natal - RN, 59064-900</p>
+                        <p id="endereco-texto">Avenida Senador Salgado Filho, 2234, Av. das Brancas Dunas, 47 - Candelária, Natal - RN, 59064-900 (Natal Shopping)</p>
                     </div>
                 </div>
                 <div class="contato">
@@ -102,6 +102,6 @@
             <p>Mockup desenvolvido por EJECT</p>
         </div>
     </footer>
-    
+    <script src="js/contato/contato.js"></script>
 </body>
 </html>
