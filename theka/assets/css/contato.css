@@ -22,7 +22,7 @@ h1 {
 }
 
 iframe {
-    width: 100%;
+    max-width: 100%;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
@@ -51,7 +51,7 @@ iframe {
 }
 
 .endereco {
-    max-width: 654px;
+    max-width: 616px;
     padding: 15px 19px;
     color: #393939;
     font-family: var(--family-inter);
@@ -153,6 +153,10 @@ input::placeholder, textarea::placeholder {
 
     .contact-us h3 {
         font-size: 1.5rem;
+    }
+
+    .endereco, .localizacao {
+        max-width: 616px;
     }
 
     label {

@@ -11,32 +11,41 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        const RESET_URL = 'https://thekaapi.pythonanywhere.com/auth/password/reset/'; 
+
+        const resetData = {
+            email: email
+        };
+
         try {
-            const response = await fetch(`http://localhost:3000/usuarios?email=${email}`);
+            // Faz uma requisição POST para iniciar o processo de recuperação
+            const response = await fetch(RESET_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(resetData),
+            });
             
-            if (!response.ok) {
-                throw new Error('Erro ao conectar com o servidor.');
-            }
+            const responseData = await response.json();
 
-            const usuarios = await response.json();
+            if (response.ok) {
+                // SUCESSO! A API DEVE ter iniciado o envio do e-mail.
+                alert('Email de recuperação enviado com sucesso');
 
-            // se achou o e-mail, siga em frente.
-            if (usuarios.length > 0) {
-                
-                // Salva SÓ O E-MAIL e no sessionStorage (temporário)
-                sessionStorage.setItem('emailParaRecuperar', email);
-
-                // Redireciona para a prox tela
                 window.location.href = '/assets/recuperar_senha_second.html'; 
 
             } else {
-                // Usuário NÃO encontrado
-                alert('E-mail não cadastrado.');
+                // ERRO do servidor se o formato do e-mail for inválido)
+                const errorMessage = responseData.email || responseData.detail || 'Não foi possível iniciar a recuperação. Tente novamente.';
+                
+                alert(`Erro: ${errorMessage}`);
+                console.error('Erro no servidor:', response.status, responseData);
             }
 
         } catch (error) {
-            console.error('Erro ao verificar e-mail:', error);
-            alert('Falha na comunicação com o servidor. Tente novamente.');
+            console.error('Falha na comunicação:', error);
+            alert('Falha na comunicação com o servidor. Verifique sua conexão.');
         }
     });
 });
