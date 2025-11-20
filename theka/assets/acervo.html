@@ -11,11 +11,7 @@
     <link rel="stylesheet" href="css/acervo/modal_livros.css">
     <link rel="stylesheet" href="css/acervo/modal_livros_editar.css">
     <title>Acervo</title>
-    <script src="/assets/js/acervo/acervo.js" defer></script>
-    <script src="/assets/js/acervo/livros_novidades.js" defer></script>
-    <script src="/assets/js/acervo/catalogos.js" defer></script>
-    <script src="/assets/js/acervo/modal_material.js" defer></script>
-    <script src="/assets/js/acervo/modal_livros.js" defer></script>
+    
 </head>
 <body>
     <header>
@@ -78,33 +74,32 @@
             <div class="catalogos">
                 <div> 
                     <h2>Veja nosso catálogo</h2>
-                    <form action="">
-                        <div class="busca-catalogos">
-                            <input type="text" placeholder="Fazer busca">
-                            <div class="select_catalogos" id="filtros-dropdown"> 
-                                <select name="genero" id="genero">
-                                    <option value="">Gênero</option>
-                                    <option value="romance">Romance</option>
-                                    <option value="terror">Terror</option>
-                                    <option value="aventura">Aventura</option>
+                    <form action="" onsubmit="event.preventDefault();"> <div class="busca-catalogos">
+                        <input type="text" id="filtro-texto" placeholder="Fazer busca por título ou autor">
+                        
+                        <div class="select_catalogos" id="filtros-dropdown"> 
+                            <select name="genero" id="filtro-genero">
+                                <option value="">Todos os Gêneros</option>
                                 </select>
-                                <select name="editora" id="editora">
-                                    <option value="">Editora</option>
-                                    <option value="editora-1">Editora 1</option>
-                                    <option value="editora-2">Editora 2</option>
-                                </select>
-                                <button type="submit" class="btn_buscar">Buscar <img src="img/acervo/icon_buscar_catalogos.png" alt=""></button>
-                            </div>
-
-                            <button type="submit" class="btn_buscar_mobile_lupa">
-                                <img src="img/acervo/icon_buscar_catalogos.png" alt="Buscar">
-                            </button>
                             
-                            <button type="button" class="btn_filtro_mobile" id="filtro-toggle-btn">
-                                <img src="img/acervo/icon_select.png" alt="Filtros">
+                            <select name="editora" id="filtro-editora">
+                                <option value="">Todas as Editoras</option>
+                                </select>
+                            
+                            <button type="button" class="btn_buscar" id="btn-buscar-filtros">
+                                Buscar <img src="img/acervo/icon_buscar_catalogos.png" alt="">
                             </button>
-                        </div> 
-                    </form>
+                        </div>
+
+                        <button type="button" class="btn_buscar_mobile_lupa" id="btn-buscar-mobile">
+                            <img src="img/acervo/icon_buscar_catalogos.png" alt="Buscar">
+                        </button>
+                        
+                        <button type="button" class="btn_filtro_mobile" id="filtro-toggle-btn">
+                            <img src="img/acervo/icon_select.png" alt="Filtros">
+                        </button>
+                    </div> 
+                </form>
                 </div>
             </div>
         </section>
@@ -124,10 +119,15 @@
                             <form class="modal-form">
                                 <div class="form-coluna-esquerda">
                                     <div class="cover-upload-area">
-                                        <img src="img/acervo/bg_add_capa.png" alt="Upload" class="placeholder-icon"> <button type="button" class="btn-add-cover">
-                                            Adicionar capa
-                                        <img src="img/acervo/icone_add_capa.png" alt=""> </button>
-                                    </div>
+                                    <img src="img/acervo/bg_add_capa.png" alt="Upload" class="placeholder-icon" id="add-capa-preview" style="max-height: 200px; object-fit: contain;">
+                                    
+                                    <input type="file" id="add-capa-input" accept="image/*" style="display: none;">
+
+                                    <button type="button" class="btn-add-cover" id="btn-trigger-add-capa">
+                                        Adicionar capa
+                                        <img src="img/acervo/icone_add_capa.png" alt=""> 
+                                    </button>
+                                </div>
                                 </div>
                                 <div class="form-coluna-direita">
                                     <div class="form-group grupo-maior">
@@ -152,12 +152,9 @@
                                         <input type="text" id="ano" placeholder="000">
                                     </div>
                                     <div class="form-group">
-                                        <label for="editora">Editora</label>
-                                        <select id="editora">
-                                            <option value="">Selecionar</option>
-                                            <option value="editora-1">Editora 1</option>
-                                            <option value="editora-2">Editora 2</option>
-                                            <option value="editora-3">Editora 3</option>
+                                        <label for="add-editora">Editora</label>
+                                        <select id="add-editora">
+                                            <option value="">Carregando...</option>
                                         </select>
                                     </div>
                                     <div class="form-group full-width">
@@ -176,7 +173,7 @@
                     </div>
 
                     <!-- MODAL LIVROS -->
-                     <div class="modal-overlay" id="modal-ver-livro">
+                    <div class="modal-overlay" id="modal-ver-livro">
                         <div class="modal-view-card">
                             <button class="modal-close-btn" id="fechar-ver-livro"><img src="/assets/img/acervo/XCircle.png" alt=""></button>
                             <div class="modal-view-img-container">
@@ -205,57 +202,65 @@
                         <div class="modal-content">
                             <button class="modal-close-btn" id="fechar-editar-material">&times;</button>
                             <h2>Editar material</h2>
-                            <form class="modal-form">
+                            
+                            <form class="modal-form" id="form-editar-livro">
+                        
+                                <input type="hidden" id="edit-id">
+
                                 <div class="form-coluna-esquerda">
                                     <div class="edit-cover-preview">
                                         <img id="edit-capa-preview" src="" alt="Capa do livro">
+                                        <!-- <input type="file" id="edit-capa-input" accept="image/*" style="margin-top: 10px; width: 100%;"> -->
                                     </div>
                                 </div>
+
                                 <div class="form-coluna-direita">
-                                    <div class="form-group">
+                                    <div class="form-group grupo-maior">
                                         <label for="edit-titulo">Título no material:</label>
-                                        <input type="text" id="edit-titulo">
+                                        <input type="text" id="edit-titulo"> 
                                     </div>
+                                    
                                     <div class="form-group">
                                         <label for="edit-paginas">Número de páginas</label>
                                         <input type="text" id="edit-paginas">
                                     </div>
+
                                     <div class="form-group">
                                         <label for="edit-isbn">ISBN</label>
                                         <input type="text" id="edit-isbn">
                                     </div>
-                                    <div class="form-group">
+
+                                    <div class="form-group grupo-maior">
                                         <label for="edit-autor">Autor:</label>
                                         <input type="text" id="edit-autor">
                                     </div>
+
                                     <div class="form-group">
                                         <label for="edit-ano">Ano de publicação</label>
                                         <input type="text" id="edit-ano">
                                     </div>
+
                                     <div class="form-group">
                                         <label for="edit-editora">Editora</label>
                                         <select id="edit-editora">
                                             <option value="">Selecionar</option>
-                                            <option value="Companhia das Letras">Companhia das Letras</option>
-                                            <option value="Editora 1">Editora 1</option>
-                                            <option value="Editora 2">Editora 2</option>
                                         </select>
                                     </div>
+
                                     <div class="form-group full-width">
                                         <label for="edit-resumo">Resumo do material:</label>
                                         <textarea id="edit-resumo"></textarea>
                                     </div>
                                 </div>
+                                
                                 <div class="form-botoes form-botoes-editar">
                                     <button type="button" class="btn-deletar" id="btn-deletar-material">
-                                        Deletar 
-                                        <img src="img/acervo/icon_deletar_modal_livros.png" alt="Deletar">
+                                        Deletar <img src="img/acervo/icon_deletar_modal_livros.png" alt="Lixeira">
                                     </button>
                                     <div>
                                         <button type="button" class="btn-cancelar" id="cancelar-editar-material">Cancelar</button>
                                         <button type="submit" class="btn-salvar">
-                                            Salvar
-                                            <img src="img/acervo/icone_salvar_modal.png" alt="Salvar">
+                                            Salvar <img src="img/acervo/icone_salvar_modal.png" alt="Salvar">
                                         </button>
                                     </div>
                                 </div>
@@ -621,8 +626,13 @@
             <p>Mockup desenvolvido por EJECT</p>
         </div>
     </footer>
-    <script type="module" src="js/acervo/api/api.js"></script>
-    <script type="module" src="js/acervo/api/main.js"></script>
-    <script type="module" src="js/acervo/api/ui.js"></script>
+    <script src="js/acervo/catalogo_livros.js"></script>
+    <script src="js/acervo/acervo.js" ></script>
+    <script src="js/acervo/gerenciar_livros.js"></script>
+    <script src="js/acervo/gerenciar_material.js"></script>
+    <script src="js/acervo/livros_novidades.js" ></script>
+    <script src="js/acervo/catalogos.js" ></script>
+    <script src="js/acervo/modal_material.js" ></script>
+    <script src="js/acervo/filtro_catalogo.js" ></script>
 </body>
 </html>

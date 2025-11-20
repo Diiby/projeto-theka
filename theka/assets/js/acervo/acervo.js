@@ -24,3 +24,5 @@ btnNumber3.addEventListener('click', () => {
 
     btnNumber3.classList.add('active')
 })
+
+

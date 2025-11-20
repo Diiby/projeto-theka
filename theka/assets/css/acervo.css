@@ -201,18 +201,19 @@ main {
     flex-wrap: wrap;
 }
 
-/* .items-book img {
-    width: 100%;
-} */
- .items-book {
+.items-book {
+    width: 223px; 
+    height: 326px;
     position: relative;
     overflow: hidden; 
-    cursor: pointer;
+    border-radius: 20px; 
 }
 
 .items-book img {
     width: 100%;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
     display: block;
 }
 
@@ -535,8 +536,9 @@ main {
         gap: 15px;
     }
 
-    .items-book img {
-        max-width: 173px;
+    .items-book {
+        width: 173px;
+        height: 250px;
     }
 
     .btn-adicionar {
