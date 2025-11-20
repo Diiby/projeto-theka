@@ -4,13 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const passwordInput = document.getElementById('password');
     const confirmPasswordInput = document.getElementById('confirmPassword');
 
-    // Pega o e-mail que a "Etapa 1" salvou
-    const emailParaRecuperar = sessionStorage.getItem('emailParaRecuperar');
+    // Extração dos parâmetros uid e token da URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const uid = urlParams.get('uid'); 
+    const token = urlParams.get('token'); 
 
-    // Se não houver e-mail salvo, manda o usuário de volta
-    if (!emailParaRecuperar) {
-        alert('Nenhum e-mail encontrado. Por favor, comece o processo de recuperação novamente.');
-        window.location.href = '/assets/recuperar_senha_first.html';
+
+    if (!uid || !token) {
+        alert('O link de redefinição de senha está incompleto ou expirado. Por favor, solicite um novo link.');
+
+        console.error("UID ou Token ausente na URL. Formulário desativado.");
+        recuperarForm.querySelector('button[type="submit"]').disabled = true; 
+        
         return;
     }
 
@@ -20,47 +25,58 @@ document.addEventListener('DOMContentLoaded', () => {
         const novaSenha = passwordInput.value;
         const confirmSenha = confirmPasswordInput.value;
 
-        // verifica se as senhas são iguais
+        // Verifica se as senhas locais são iguais
         if (novaSenha !== confirmSenha) {
             alert('As senhas não coincidem. Por favor, verifique.');
             return;
         }
 
+
+        const CONFIRM_URL = 'https://thekaapi.pythonanywhere.com/auth/password/reset/confirm/';
+
+        const resetData = {
+            uid: uid,
+            token: token,
+            new_password: novaSenha,
+            new_password_confirm: confirmSenha
+        };
+
         try {
-            // Vamos buscar o usuário pelo e-mail que salvamos.
-            const responseGet = await fetch(`http://localhost:3000/usuarios?email=${emailParaRecuperar}`);
-            const usuarios = await responseGet.json();
-
-            if (usuarios.length === 0) {
-
-                alert('Usuário não encontrado.');
-                return;
-            }
-
-            const usuario = usuarios[0];
-            const userId = usuario.id;
-
-            // PATCH é melhor que PUT, pois só atualiza o campo 'senha'
-            const responsePatch = await fetch(`http://localhost:3000/usuarios/${userId}`, {
-                method: 'PATCH', // PATCH = Atualização Parcial
+            // Envia a requisição POST para a API
+            const response = await fetch(CONFIRM_URL, {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    senha: novaSenha // Envia apenas a nova senha
-                }),
+                body: JSON.stringify(resetData),
             });
 
-            if (responsePatch.ok) {
-                // alert('sucesso')
+            const responseData = await response.json();
+
+            if (response.ok) {
+
+                alert('Sua senha foi redefinida com sucesso! Você pode fazer login agora.');
+                sessionStorage.removeItem('emailParaRecuperar'); 
                 window.location.href = '/assets/login.html';
 
             } else {
-                alert('Erro ao atualizar a senha. Tente novamente.');
+
+                let errorMessage = 'Erro ao redefinir a senha. Verifique o link ou tente novamente.';
+
+                if (responseData.new_password) {
+                    errorMessage = `Erro de Senha: ${responseData.new_password.join(' ')}`;
+                } else if (responseData.detail) {
+                    errorMessage = `Erro: ${responseData.detail}`;
+                } else if (responseData.token) {
+                    errorMessage = 'Erro: Token inválido ou expirado.';
+                }
+                
+                alert(errorMessage);
+                console.error('Erro na redefinição:', response.status, responseData);
             }
 
         } catch (error) {
-            console.error('Erro ao recuperar senha:', error);
+            console.error('Falha na comunicação:', error);
             alert('Falha na comunicação com o servidor.');
         }
     });

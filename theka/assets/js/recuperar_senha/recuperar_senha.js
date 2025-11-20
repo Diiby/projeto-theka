@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            // Faz uma requisição POST para iniciar o processo de recuperação
             const response = await fetch(RESET_URL, {
                 method: 'POST',
                 headers: {
@@ -30,13 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const responseData = await response.json();
 
             if (response.ok) {
-                // SUCESSO! A API DEVE ter iniciado o envio do e-mail.
-                alert('Email de recuperação enviado com sucesso');
-
+                // Sucesso! A API iniciou o processo de envio do e-mail.
+                alert('Se o e-mail estiver cadastrado, você receberá um link de redefinição de senha.');
+                // Redireciona, embora o usuário deva checar o e-mail.
                 window.location.href = '/assets/recuperar_senha_second.html'; 
 
             } else {
-                // ERRO do servidor se o formato do e-mail for inválido)
+                // Erro de validação da API (Status 400)
                 const errorMessage = responseData.email || responseData.detail || 'Não foi possível iniciar a recuperação. Tente novamente.';
                 
                 alert(`Erro: ${errorMessage}`);
